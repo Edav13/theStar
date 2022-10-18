@@ -9,7 +9,7 @@ import { PeopleService } from 'src/app/shared/services/people.service';
 })
 export class FilmComponent implements OnInit {
 
-  public films: any;
+  public film: any;
   public idPeople: number = 0;
 
   constructor(
@@ -21,10 +21,9 @@ export class FilmComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       if (params['id']) {
         this.idPeople = parseInt(params['id']);
-        this.peopleService.getFilmsId(params['id']).subscribe(
+        this.peopleService.getFilmsId(params['film']).subscribe(
           (resp: any) => {
-            console.log(resp);
-            this.films = resp;
+            this.film = resp;
           });
       }
     });
