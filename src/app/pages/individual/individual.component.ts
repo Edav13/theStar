@@ -30,4 +30,9 @@ export class IndividualComponent implements OnInit {
     });
   };
 
+  splitLast(film: string): any{
+    let array = film.split("/");
+    return array[array.length - 2];
+  }
+
 }

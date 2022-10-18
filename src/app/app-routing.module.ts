@@ -10,7 +10,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/individual/individual.module').then(m => m.IndividualModule)
   },
   {
-    path: 'film/:id',
+    path: 'film/:id/:film',
     loadChildren: () => import('./pages/film/film.module').then(m => m.FilmModule)
   },
   {

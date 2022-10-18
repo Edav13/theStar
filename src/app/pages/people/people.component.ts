@@ -21,7 +21,6 @@ export class PeopleComponent implements OnInit {
   private loadData(): void {
     this.peopleService.getPeoples().subscribe(
       (resp: any) => {
-        console.log(resp);
         this.listPeople = resp.results;
       });
   };

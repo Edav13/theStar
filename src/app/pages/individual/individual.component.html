@@ -33,11 +33,22 @@
       <label class="col-lg-4" for="skin_color">skin color: </label>
       <label class="col-lg-8" for="">{{people?.skin_color}}</label>
     </div>
+    <div class="col-lg-12">
+      <label class="col-lg-4" for="skin_color">Films </label>
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let film of people?.films">
+            <td>{{film}}</td>
+            <td>
+              <button class="btn btn-secondary" [routerLink]="['/film/', idPeople, splitLast(film) ]">Detail</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 <p></p>
 <div class="text-center">
-  <button class="btn btn-secondary" [routerLink]="['/film', idPeople]">Films</button>
-  &nbsp;
   <button class="btn btn-primary" [routerLink]="['/people']">Return</button>
 </div>
