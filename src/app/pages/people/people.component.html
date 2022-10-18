@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="text-center">The Star Wars</h1>
+  <table class="table">
+    <thead>
+      <th>Hair Color</th>
+      <th>Gender</th>
+      <th>Name</th>
+      <th>height</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let people of listPeople; let id = index">
+        <td>{{people?.hair_color}}</td>
+        <td>{{people?.gender}}</td>
+        <td>{{people?.name}}</td>
+        <td>{{people?.height}}</td>
+        <td>
+          <button class="btn btn-secondary" [routerLink]="['/individual/', id + 1]">Detail</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

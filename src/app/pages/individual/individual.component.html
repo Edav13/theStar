@@ -1,0 +1,43 @@
+<h2 class="text-center">Individual data</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <label class="col-lg-4" for="name">name: </label>
+      <label class="col-lg-8" for="">{{people?.name}}</label>
+    </div>
+    <div class="col-lg-4">
+      <label class="col-lg-4" for="birth_year">birth_year: </label>
+      <label class="col-lg-8" for="">{{people?.birth_year}}</label>
+    </div>
+    <div class="col-lg-4">
+      <label class="col-lg-4" for="name">eye color: </label>
+      <label class="col-lg-8" for="">{{people?.eye_color}}</label>
+    </div>
+    <div class="col-lg-4">
+      <label class="col-lg-4" for="name">birth_year: </label>
+      <label class="col-lg-8" for="">{{people?.birth_year}}</label>
+    </div>
+    <div class="col-lg-4">
+      <label class="col-lg-4" for="name">height: </label>
+      <label class="col-lg-8" for="">{{people?.height}}</label>
+    </div>
+    <div class="col-lg-4">
+      <label class="col-lg-4" for="name">gender: </label>
+      <label class="col-lg-8" for="">{{people?.gender}}</label>
+    </div>
+    <div class="col-lg-4">
+      <label class="col-lg-4" for="name">mass: </label>
+      <label class="col-lg-8" for="">{{people?.mass}}</label>
+    </div>
+    <div class="col-lg-4">
+      <label class="col-lg-4" for="skin_color">skin color: </label>
+      <label class="col-lg-8" for="">{{people?.skin_color}}</label>
+    </div>
+  </div>
+</div>
+<p></p>
+<div class="text-center">
+  <button class="btn btn-secondary" [routerLink]="['/film', idPeople]">Films</button>
+  &nbsp;
+  <button class="btn btn-primary" [routerLink]="['/people']">Return</button>
+</div>
