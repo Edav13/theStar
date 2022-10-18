@@ -24,7 +24,6 @@ export class IndividualComponent implements OnInit {
         this.idPeople = parseInt(params['id']);
         this.peopleService.getPeoplesId(params['id']).subscribe(
           (resp: any) => {
-            console.log(resp);
             this.people = resp;
           });
       }
