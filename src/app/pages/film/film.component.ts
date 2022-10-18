@@ -23,6 +23,7 @@ export class FilmComponent implements OnInit {
         this.idPeople = parseInt(params['id']);
         this.peopleService.getFilmsId(params['film']).subscribe(
           (resp: any) => {
+            console.log(resp)
             this.film = resp;
           });
       }

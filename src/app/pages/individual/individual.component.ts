@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PeopleService } from 'src/app/shared/services/people.service';
 
 @Component({
@@ -15,8 +15,7 @@ export class IndividualComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private peopleService: PeopleService
-  ) {
-  };
+  ) {  };
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -30,9 +29,9 @@ export class IndividualComponent implements OnInit {
     });
   };
 
-  splitLast(film: string): any{
-    let array = film.split("/");
+  public splitLast(film: string): any{
+    let array = film.split('/');
     return array[array.length - 2];
-  }
+  };
 
 }
