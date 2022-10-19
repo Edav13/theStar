@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 import { PeopleService } from 'src/app/shared/services/people.service';
 
 @Component({
@@ -7,8 +9,9 @@ import { PeopleService } from 'src/app/shared/services/people.service';
   templateUrl: './film.component.html',
   styleUrls: ['./film.component.scss']
 })
-export class FilmComponent implements OnInit {
+export class FilmComponent implements OnInit, OnDestroy {
 
+  private _subscription: Subscription[] = new Array<any>;
   public film: any;
   public idPeople: number = 0;
 
@@ -21,13 +24,17 @@ export class FilmComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       if (params['id']) {
         this.idPeople = parseInt(params['id']);
-        this.peopleService.getFilmsId(params['film']).subscribe(
-          (resp: any) => {
-            console.log(resp)
-            this.film = resp;
-          });
+        this._subscription.push(
+          this.peopleService.getFilmsId(params['film']).subscribe(
+            (resp: any) => {
+              this.film = resp;
+            })
+        );
       }
     });
   };
 
+  ngOnDestroy(): void {
+    this._subscription.map((next) => next.unsubscribe);
+  };
 }

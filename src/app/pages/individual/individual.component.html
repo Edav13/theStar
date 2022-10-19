@@ -1,50 +1,53 @@
-<h2 class="text-center">Individual data</h2>
+<h2 class="text-center p-4">Individual data: {{people?.name}}</h2>
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
-      <label class="col-lg-4" for="name">name: </label>
-      <label class="col-lg-8" for="">{{people?.name}}</label>
-    </div>
-    <div class="col-lg-4">
-      <label class="col-lg-4" for="birth_year">birth_year: </label>
+      <label class="col-lg-4 fw-bold" for="birth_year">Birth year: </label>
       <label class="col-lg-8" for="">{{people?.birth_year}}</label>
     </div>
     <div class="col-lg-4">
-      <label class="col-lg-4" for="name">eye color: </label>
+      <label class="col-lg-4 fw-bold" for="name">Eye color: </label>
       <label class="col-lg-8" for="">{{people?.eye_color}}</label>
     </div>
     <div class="col-lg-4">
-      <label class="col-lg-4" for="name">birth_year: </label>
-      <label class="col-lg-8" for="">{{people?.birth_year}}</label>
+      <label class="col-lg-4 fw-bold" for="name">Skin color: </label>
+      <label class="col-lg-8" for="">{{people?.skin_color}}</label>
     </div>
     <div class="col-lg-4">
-      <label class="col-lg-4" for="name">height: </label>
-      <label class="col-lg-8" for="">{{people?.height}}</label>
+      <label class="col-lg-4 fw-bold" for="name">Height: </label>
+      <label class="col-lg-8" for="">{{people?.height}} cm.</label>
     </div>
     <div class="col-lg-4">
-      <label class="col-lg-4" for="name">gender: </label>
+      <label class="col-lg-4 fw-bold" for="name">Gender: </label>
       <label class="col-lg-8" for="">{{people?.gender}}</label>
     </div>
     <div class="col-lg-4">
-      <label class="col-lg-4" for="name">mass: </label>
-      <label class="col-lg-8" for="">{{people?.mass}}</label>
+      <label class="col-lg-4 fw-bold" for="name">Mass: </label>
+      <label class="col-lg-8" for="">{{people?.mass}} kg.</label>
     </div>
-    <div class="col-lg-4">
-      <label class="col-lg-4" for="skin_color">skin color: </label>
-      <label class="col-lg-8" for="">{{people?.skin_color}}</label>
-    </div>
-    <div class="col-lg-12">
-      <label class="col-lg-4" for="skin_color">Films </label>
-      <table class="table">
-        <tbody>
-          <tr *ngFor="let film of people?.films">
-            <td>{{film}}</td>
-            <td>
-              <button class="btn btn-secondary" [routerLink]="['/film/', idPeople, splitLast(film) ]">Detail</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-lg-12 p-4">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <label class="fw-bold" for="films">Films </label>
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let film of films">
+                <td>
+                  <a [routerLink]="['/film/', idPeople, film?.id]" [ngStyle]="{color: 'inherit', textDecoration: 'none'}">
+                    {{film?.name}} </a>
+                </td>
+                <td>
+                  <button class="btn btn-secondary" [routerLink]="['/film/', idPeople, film?.id ]"
+                    *ngIf="film?.id">Detail</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

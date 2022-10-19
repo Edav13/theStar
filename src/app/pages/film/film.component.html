@@ -1,23 +1,52 @@
-<h2 class="text-center">Film </h2>
+<h2 class="text-center p-4">Film: {{film?.title}}</h2>
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
-      <label class="col-lg-4" for="Title">Title: </label>
-      <label class="col-lg-8" for="">{{film?.title}}</label>
+      <label class="col-lg-4 fw-bold" for="Title">Url: </label>
+      <label class="col-lg-8" for="">{{film?.url}}</label>
     </div>
     <div class="col-lg-4">
-      <label class="col-lg-4" for="episode_id">episode_id: </label>
+      <label class="col-lg-4 fw-bold" for="episode_id">Episode: </label>
       <label class="col-lg-8" for="">{{film?.episode_id}}</label>
     </div>
     <div class="col-lg-4">
-      <label class="col-lg-4" for="producer">Producer: </label>
+      <label class="col-lg-4 fw-bold " for="producer">Producer: </label>
       <label class="col-lg-8" for="">{{film?.producer}}</label>
+    </div>
+    <div class="col-lg-4">
+      <label class="col-lg-4 fw-bold " for="producer">Director: </label>
+      <label class="col-lg-8" for="">{{film?.director}}</label>
+    </div>
+    <div class="col-lg-4">
+      <label class="col-lg-4 fw-bold " for="producer">Release date: </label>
+      <label class="col-lg-8" for="">{{film?.release_date}}</label>
+    </div>
+    <div class="col-lg-12 p-4">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <label class="fw-bold" for="films">Vehicles </label>
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let vehicle of film?.vehicles">
+                <td>
+                  {{vehicle}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="text-center">
+<div class="text-center p-4">
   <button class="btn btn-secondary" [routerLink]="['/individual/', idPeople]">Detail</button>
   &nbsp;
   <button class="btn btn-primary" [routerLink]="['/people']">Return</button>
+  &nbsp;
+  <button class="btn btn-info" [routerLink]="['/']">Home</button>
 </div>
