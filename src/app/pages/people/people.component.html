@@ -1,22 +1,28 @@
 <div class="container p-4">
   <h1 class="text-center">The Star Wars</h1>
-  <table class="table">
-    <thead>
-      <th>Hair Color</th>
-      <th>Gender</th>
-      <th>Name</th>
-      <th>Height</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let people of listPeople; let id = index">
-        <td>{{people?.hair_color}}</td>
-        <td>{{people?.gender}}</td>
-        <td> <a [routerLink]="['/individual/', id + 1]" [ngStyle]="{color: 'inherit', textDecoration: 'none'}"> {{people?.name}} </a></td>
-        <td>{{people?.height}} cm.</td>
-        <td>
-          <button class="btn btn-secondary" [routerLink]="['/individual/', id + 1]">Detail</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <ngx-datatable class="material striped" [rows]="listPeople" [columnMode]="ColumnMode.force" [headerHeight]="50"
+    [footerHeight]="50" [rowHeight]="50">
+    <ng-container *ngFor="let item of columns">
+      <ngx-datatable-column [prop]="item?.prop" [name]="item?.name" [sortable]="!item?.sortable">
+        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+          <ng-container *ngIf="item?.name === 'Gender' || item?.prop === 'hair_color'; else elseif ">
+            {{ value }}
+          </ng-container>
+          <ng-template #elseif>
+            <a [routerLink]="['/individual/', row?.id]" [ngStyle]="{color: 'inherit', textDecoration: 'none'}"
+              *ngIf="item?.name === 'Name'">
+              {{value}}
+            </a>
+            <span *ngIf="item?.name === 'Height'">
+              {{ value }} cm.
+            </span>
+            <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/individual/', value]"
+              *ngIf="item?.name === 'Action'">
+              Detail
+            </button>
+          </ng-template>
+        </ng-template>
+      </ngx-datatable-column>
+    </ng-container>
+  </ngx-datatable>
 </div>

@@ -15,6 +15,11 @@ export class IndividualComponent implements OnInit, OnDestroy {
   public people: any;
   public idPeople: number = 0;
   public films: Array<any> = new Array<any>;
+  public films1: Array<any> = new Array<any>;
+  public columns: Array<any> = [
+    { prop: 'name', name: 'Name' },
+    { prop: 'id', name: 'Action', sortable: true }
+  ];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -35,6 +40,9 @@ export class IndividualComponent implements OnInit, OnDestroy {
                 arrayFilm = element.split('/');
                 this._getNameFilm(arrayFilm[arrayFilm.length - 2])
               });
+              setTimeout(() => {
+                this.films = this.films1;
+              }, 1000);
             })
         );
       }
@@ -45,7 +53,7 @@ export class IndividualComponent implements OnInit, OnDestroy {
     try {
       let test: any = await this.peopleService.getFilmsId(idFilm).toPromise();
       if (test) {
-        this.films.push({ id: idFilm, name: test.title });
+        this.films1.push({ id: idFilm, name: test.title });
       }
     } catch (err) {
       console.error(err);

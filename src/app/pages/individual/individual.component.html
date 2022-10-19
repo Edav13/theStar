@@ -30,22 +30,22 @@
         <div class="col-lg-12 text-center">
           <label class="fw-bold" for="films">Films </label>
         </div>
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
-          <table class="table">
-            <tbody>
-              <tr *ngFor="let film of films">
-                <td>
-                  <a [routerLink]="['/film/', idPeople, film?.id]" [ngStyle]="{color: 'inherit', textDecoration: 'none'}">
-                    {{film?.name}} </a>
-                </td>
-                <td>
-                  <button class="btn btn-secondary" [routerLink]="['/film/', idPeople, film?.id ]"
-                    *ngIf="film?.id">Detail</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="col-lg-3"></div>
+        <div class="col-lg-5 p-4">
+          <ngx-datatable class="material striped" [rows]="films" [headerHeight]="50" [footerHeight]="50"
+            [rowHeight]="50">
+            <ng-container *ngFor="let item of columns">
+              <ngx-datatable-column [prop]="item?.prop" [name]="item?.name" [sortable]="!item?.sortable" [width]="250">
+                <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                  <a [routerLink]="['/film/', idPeople, row?.id]"
+                    [ngStyle]="{color: 'inherit', textDecoration: 'none'}" *ngIf="item?.name === 'Name'">
+                    {{value}} </a>
+                  <button class="btn btn-sm btn-outline-success" [routerLink]="['/film/', idPeople, row?.id ]"
+                    *ngIf="item?.name === 'Action'">Detail</button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ng-container>
+          </ngx-datatable>
         </div>
       </div>
     </div>
@@ -53,5 +53,5 @@
 </div>
 <p></p>
 <div class="text-center">
-  <button class="btn btn-primary" [routerLink]="['/people']">Return</button>
+  <button class="btn btn-outline-primary" [routerLink]="['/people']">Return</button>
 </div>

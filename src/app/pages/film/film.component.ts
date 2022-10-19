@@ -13,7 +13,11 @@ export class FilmComponent implements OnInit, OnDestroy {
 
   private _subscription: Subscription[] = new Array<any>;
   public film: any;
+  public vehicles = new Array<any>;
   public idPeople: number = 0;
+  public columns: Array<any> = [
+    { prop: 'name', name: 'Name' },
+  ];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -28,6 +32,13 @@ export class FilmComponent implements OnInit, OnDestroy {
           this.peopleService.getFilmsId(params['film']).subscribe(
             (resp: any) => {
               this.film = resp;
+              let arrayVehicle = new Array;
+              resp.vehicles.forEach((element: any) => {
+                arrayVehicle.push({name: element})
+              });
+              setTimeout(() => {
+                this.vehicles = arrayVehicle;
+              }, 1000);
             })
         );
       }

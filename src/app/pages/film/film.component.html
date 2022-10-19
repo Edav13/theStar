@@ -28,15 +28,10 @@
         </div>
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
-          <table class="table">
-            <tbody>
-              <tr *ngFor="let vehicle of film?.vehicles">
-                <td>
-                  {{vehicle}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <ngx-datatable class="material striped" [rows]="vehicles" [headerHeight]="50" [footerHeight]="50"
+          [rowHeight]="50">
+          <ngx-datatable-column name="Vehicle" prop="name" [sortable]="false" [width]="400"></ngx-datatable-column>
+          </ngx-datatable>
         </div>
       </div>
     </div>
@@ -44,9 +39,9 @@
 </div>
 
 <div class="text-center p-4">
-  <button class="btn btn-secondary" [routerLink]="['/individual/', idPeople]">Detail</button>
+  <button class="btn btn-outline-secondary" [routerLink]="['/individual/', idPeople]">Detail</button>
   &nbsp;
-  <button class="btn btn-primary" [routerLink]="['/people']">Return</button>
+  <button class="btn btn-outline-primary" [routerLink]="['/people']">Return</button>
   &nbsp;
-  <button class="btn btn-info" [routerLink]="['/']">Home</button>
+  <button class="btn btn-outline-info" [routerLink]="['/']">Home</button>
 </div>
